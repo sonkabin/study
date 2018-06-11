@@ -9,7 +9,9 @@
 <br>
 不需要提供iterator实现，因为iterator和list iterator已经被实现了
 <br>
-**由于可以只实现不可修改的list，因此get和size方法都是abstract的，而可选的方法都是有默认实现的(即抛出UnsupportedOperationException)**
+**由于可以只实现不可修改的list，因此get和size方法都是abstract的，而可选的方法都是有默认实现的(即抛出UnsupportedOperationException)．
+模板方法模式，get和size由子类实现，set/add/remove方法是钩子方法，但是ArrayList将许多方法都重写了，也就是说，如果要自己实现一个继承AbstractList
+的类，可以减轻开发压力**
 
 ## add(E)
 在list末尾添加元素,调用add(int,E)

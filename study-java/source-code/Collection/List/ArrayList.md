@@ -67,3 +67,12 @@ add方法时间复杂度为O(n),其他操作都是复杂度为线性
 public boolean contains(Object o)和public int indexOf(Object o)
 <br>
 contains方法调用indexOf方法，indexOf方法依赖于equals
+
+### 会使modCount变化的方法有
+- ensureCapacity(int minCapacity)
+- private void ensureExplicitCapacity(int minCapacity)
+- add(E e)和add(int index, E e)，因为最终会调用ensureExplicitCapacity方法
+- remove(int index)和remove(Object o)
+- clear()
+- addAll(Collection<? extends E> c)和addAll(int index, Collection<? extends E> c)
+- removeAll(Collection<?> c)和retainAll(Collection<?> c)
