@@ -22,7 +22,7 @@
 
 ## Methods
 
-    //在put和putAll方法插入entry后，被他们调用，当map代表的是cache时，很有用，它可以让map删除旧的元素来减少内存的消耗，返回true时表示需要移除最旧的元素，返回false则和正常的map表现一致，**注意**，它默认是返回false的，因此想用LinkedHashMap作缓存的话，需要继承此类重写这个方法
+    //在put和putAll方法插入entry后，被他们调用，当map代表的是cache时，很有用，它可以让map删除旧的元素来减少内存的消耗，返回true时表示需要移除最旧的元素，返回false则和正常的map表现一致，**注意，它默认是返回false的，因此想用LinkedHashMap作缓存的话，需要继承此类重写这个方法**
     protected boolean removeEldestEntry(Map.Entry<K,V> eldest) {
         return false;
     }
@@ -34,16 +34,3 @@
 <br>
 
 **钩子方法afterNodeAccess**，主要用来将访问过的entry放到链表尾部，当accessOrder为true时，get和put方法都会调用此方法
-
-
-
-
-
-A special constructor is provided to create a linked hash map whose order of iteration is the order in which its
- entries were last accessed, from least-recently accessed to most-recently (access-order). This kind of map is well-
- suited to building LRU caches. Invoking the put, putIfAbsent, get, getOrDefault, compute, computeIfAbsent,
- computeIfPresent, or merge methods results in an access to the corresponding entry (assuming it exists after the
- invocation completes). The replace methods only result in an access of the entry if the value is replaced. The putAll
- method generates one entry access for each mapping in the specified map, in the order that key-value mappings are
- provided by the specified map's entry set iterator. No other methods generate entry accesses. In particular,
- operations on collection-views do not affect the order of iteration of the backing map.
